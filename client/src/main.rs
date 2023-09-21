@@ -2,6 +2,7 @@ use std::env;
 use std::time::Instant;
 use tokio::net::TcpStream;
 use tokio::io::{AsyncWriteExt, AsyncReadExt, self};
+// use tokio::runtime::Builder;
 
 #[tokio::main]
 async fn main() {
@@ -12,6 +13,13 @@ async fn main() {
     }
     let ntask = args[2].parse::<usize>().unwrap();
     let nreq = args[3].parse::<usize>().unwrap();
+
+    // let runtime = Builder::new_multi_thread()
+    //     .worker_threads(6)
+    //     .thread_name("my-custom-name")
+    //     .thread_stack_size(3 * 1024 * 1024)
+    //     .build()
+    //     .unwrap();
 
     let mut handlers = Vec::new();
     for _ in 0..ntask {
