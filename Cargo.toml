@@ -1,0 +1,5 @@
+[workspace]
+members = ["client", "server"]
+
+# avoid warning: some crates are on edition 2021 which defaults to `resolver = "2"`, but virtual workspaces default to `resolver = "1"`
+resolver = "2"
