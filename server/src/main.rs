@@ -3,12 +3,6 @@ use tokio::io::{AsyncReadExt, AsyncWriteExt};
 
 #[tokio::main]
 async fn main() {
-    let addr = "127.0.0.1:8080".parse().unwrap();
-    let socket = TcpSocket::new_v4()?;
-    socket.set_reuseaddr(true)?;
-    socket.bind(addr)?;
-    let listener = socket.listen(1024)?;
-
     let listener = TcpListener::bind("127.0.0.1:2345").await.unwrap();
     loop {
         let (mut socket, _) = listener.accept().await.unwrap();
